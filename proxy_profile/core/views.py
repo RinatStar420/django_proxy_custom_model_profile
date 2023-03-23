@@ -9,7 +9,7 @@ class Index(TemplateView):
     template_name = 'index.html'
 
 # класс для создания пользователя
-class CreateUser(FormView):
+class CreatUser(FormView):
     form_class = UserCreationForm
     template_name = 'singup.html'
     success_url = '/'
@@ -21,7 +21,7 @@ class CreateUser(FormView):
         password = form.cleaned_data.get('password1')
         user = authenticate(username=username, password=password)
         login(self.request, user)
-        return super(CreateUser, self).form_valid(form)
+        return super(CreatUser, self).form_valid(form)
 
 # клас для отображения всех пользователей
 class ALLUsers(TemplateView):
@@ -30,5 +30,5 @@ class ALLUsers(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['user'] = Person.people.get_staff_user()
+        context['users'] = Person.people.get_staff_user()
         return context

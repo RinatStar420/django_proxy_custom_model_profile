@@ -4,7 +4,7 @@ from .managers import PersonManager
 
 
 class Person(User):
-    people  = PersonManager()
+    people = PersonManager()
 
     class Meta:
         proxy = True
